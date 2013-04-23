@@ -121,9 +121,10 @@ class UserIO():
         return self.nationality.lower()
 
     def printWelcomeMessage(self):
-        print 'Welcome to the Food Nationality Recommendation program!'
+        print '-----------------Welcome to the Food Nationality Recommendation program!-----------------'
+        print '-----------------------------------------------------------------------------------------'
         print 'This program will recommend different nationalities of food to users based on their own'
         print 'favourites and demographics by comparing their characteristics to the responses of other'
-        print 'respondants.  Please ensure to type in your responses with correct spelling in order to'
+        print 'respondants. Please ensure to type in your responses with correct spelling in order to'
         print 'ensure that the program understands your inputs.'
         print 'Program created by: Justin Moulton & Marko Nerandzic.'
