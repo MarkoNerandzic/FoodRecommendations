@@ -24,17 +24,6 @@ class FileIO:
     allNationalityArray = []
     countryArray = []
 
-    def ifNotInArrayAppendElseCount(self, data, array):
-            counter = 0
-            located = False
-            while counter < len(array) and not located:
-                if data == array[counter][0]:
-                    array[counter][1] += 1
-                    located = True
-                counter += 1
-            if not located:
-                array.append([data, 1])
-
     def getInfoFromFile(self):
         fin = open("Favourite Food Survey (Responses).csv")
         for line in fin:

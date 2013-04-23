@@ -73,7 +73,7 @@ class UserIO():
         while not finishedGettingInput:
             userInputTemp = jLibrary.getStrInput("Enter your next favorite food nationality or 'exit' to end your input!")
             counter += 1
-            if userInputTemp == 'exit' or userInputTemp == 'Exit' or userInputTemp == "EXIT":
+            if userInputTemp.lower() == 'exit':
                 finishedGettingInput = True
             elif counter == 3:
                 foodFavorites.append(userInputTemp.lower())
@@ -86,6 +86,7 @@ class UserIO():
         return jLibrary.getStrInput("What country do you currently reside in?")
 
     def displayRecommendations(self, recommendations):
+        print ''
         counter = 0
         moreSuggestions = True
         while counter < len(recommendations) and moreSuggestions:
@@ -118,3 +119,11 @@ class UserIO():
 
     def getNationality(self):
         return self.nationality.lower()
+
+    def printWelcomeMessage(self):
+        print 'Welcome to the Food Nationality Recommendation program!'
+        print 'This program will recommend different nationalities of food to users based on their own'
+        print 'favourites and demographics by comparing their characteristics to the responses of other'
+        print 'respondants.  Please ensure to type in your responses with correct spelling in order to'
+        print 'ensure that the program understands your inputs.'
+        print 'Program created by: Justin Moulton & Marko Nerandzic.'

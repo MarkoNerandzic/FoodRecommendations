@@ -19,9 +19,12 @@ from Sort import *
 import jLibrary
 
 def main():
-    fileInteraction = FileIO()
-    fileInteraction.getInfoFromFile()
-    ageArray = fileInteraction.getAgeArray()
+    fileInteraction = FileIO() # Create instances of FileIO and UserIO
+    userInteraction = UserIO()
+    userInteraction.printWelcomeMessage() # Print the welcome message
+
+    fileInteraction.getInfoFromFile() # Get the infro from the file
+    ageArray = fileInteraction.getAgeArray() # Retreive the variablies required from the file
     countryArray = fileInteraction.getCountryArray()
     firstNationalityArray = fileInteraction.getFavNationalityArray()
     secondNationalityArray = fileInteraction.getSecondFavNationalityArray()
@@ -30,9 +33,8 @@ def main():
     nationalityArray = fileInteraction.getNationalityArray()
     spicyArray = fileInteraction.getSpicyArray()
 
-    userInteraction = UserIO()
-    userInteraction.getInitialInformation()
-    age = userInteraction.getAgeRange()
+    userInteraction.getInitialInformation() # Get the user's information
+    age = userInteraction.getAgeRange() # Retreive the variables required from the user
     country = userInteraction.getLocation()
     favourites = userInteraction.getFoodFavorites()
     firstFavourite = favourites[0]
@@ -43,9 +45,8 @@ def main():
     spicy = userInteraction.getSpicy()
 
     sortClass = Sort(gender, nationality, age, spicy, favourites, country, genderArray, nationalityArray, ageArray, spicyArray, countryArray, firstNationalityArray, secondNationalityArray, thirdNationalityArray)
-    recommendations = sortClass.getRankings()
-    userInteraction.displayRecommendations(recommendations)
-
+    recommendations = sortClass.getRankings() # Sort the recommendations and then get the rankings from the class
+    userInteraction.displayRecommendations(recommendations) # Display the recommendations
 
 if __name__ == '__main__':
     main()
