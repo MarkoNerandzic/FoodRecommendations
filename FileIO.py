@@ -56,21 +56,21 @@ class FileIO:
             thirdFavNationality = line[secondFavNationalityEndComma + 1:thirdFavNationalityEndComma]
             country = line[thirdFavNationalityEndComma + 1:]
 
-            self.genderArray.append(gender)
+            self.genderArray.append(gender.lower())
 
-            self.nationalityArray.append(nationality)
+            self.nationalityArray.append(nationality.lower())
 
-            self.ageArray.append(age)
+            self.ageArray.append(age.lower())
 
-            self.spicyArray.append(spicy)
+            self.spicyArray.append(spicy.lower())
 
-            self.favNationalityArray.append(favNationality)
+            self.favNationalityArray.append(favNationality.lower())
 
-            self.secondFavNationalityArray.append(secondFavNationality)
+            self.secondFavNationalityArray.append(secondFavNationality.lower())
 
-            self.thirdFavNationalityArray.append(thirdFavNationality)
+            self.thirdFavNationalityArray.append(thirdFavNationality.lower())
 
-            self.countryArray.append(country)
+            self.countryArray.append(country.lower())
 
             counter = 0
             while counter < len(self.favNationalityArray):

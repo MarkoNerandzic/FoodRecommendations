@@ -69,55 +69,52 @@ class UserIO():
     def getFoodFavoritesFromUser(self):
         foodFavorites = []
         finishedGettingInput = False
+        counter = 0
         while not finishedGettingInput:
             userInputTemp = jLibrary.getStrInput("Enter your next favorite food nationality or 'exit' to end your input!")
-            if userInputTemp != "exit":
-                foodFavorites.append(userInputTemp)
-            else:
+            counter += 1
+            if userInputTemp == 'exit' or userInputTemp == 'Exit' or userInputTemp == "EXIT":
                 finishedGettingInput = True
+            elif counter == 3:
+                foodFavorites.append(userInputTemp.lower())
+                finishedGettingInput = True
+            else:
+                foodFavorites.append(userInputTemp.lower())
         return foodFavorites
 
     def getLocationFromUser(self):
         return jLibrary.getStrInput("What country do you currently reside in?")
 
-    def displayReccomendations(self, recommendations):
+    def displayRecommendations(self, recommendations):
         counter = 0
-        moreSuggestions = False
+        moreSuggestions = True
         while counter < len(recommendations) and moreSuggestions:
             print "Your",
             if counter%10 != 0 and counter%10 != 1 and counter%10 != 2:
-                print counter, "th",
+                print "%s%s" % (counter, "th"),
             elif counter == 0:
-                print counter+1,"st",
+                print "%s%s" % (counter + 1, "st"),
             elif counter == 1:
-                print counter+1,"nd",
+                print "%s%s" % (counter + 1, "nd"),
             else:
-                print counter+1,"rd",
-            print "recommendation is:", recommendations[counter]
-            response = 1
-            while response  == 1:
-                response = jLibrary.getOption("What would you like to do next?\n[1]See more information about " + recommendations[counter] + "food\n[2]See another suggestion\n[3]Exit[3]", 1, 3)
-                if response == 1:
-                    print "Insert More Information here"
-                elif response == 2:
-                    counter += 1
-                else:
-                    moreSuggestions = False
+                print "%s%s" % (counter + 1, "rd"),
+            print "recommendation is: %s%s" % (((recommendations[counter])[0]).upper(), (recommendations[counter])[1:])
+            counter += 1
 
     def getSpicy(self):
-        return self.spicyPreference
+        return self.spicyPreference.lower()
 
     def getGender(self):
-        return self.gender
+        return self.gender.lower()
 
     def getAgeRange(self):
-        return self.age
+        return self.age.lower()
 
     def getFoodFavorites(self):
         return self.foodNationalitiesFavorites
 
     def getLocation(self):
-        return self.location
+        return self.location.lower()
 
     def getNationality(self):
-        return self.nationality
+        return self.nationality.lower()

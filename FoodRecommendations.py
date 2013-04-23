@@ -1,17 +1,21 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        FoodRecommendations
+# Purpose:     To interact with each of the three classes in order to collect
+#              user input, analyze it, and provide recommendations for the user.
 #
-# Author:      Justin
+# Author:      Justin Moulton & Marko Nerandzic
 #
-# Created:     22/04/2013
-# Copyright:   (c) Justin 2013
-# Licence:     <your licence>
+# Created:     April 9, 2013
+# Copyright:   (c) Justin Moulton & Marko Nerandzic 2013
+# Licence:     This work is licensed under the Creative Commons
+#              Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+#              To view a copy of this license, visit
+#              http://creativecommons.org/licenses/by-nc-sa/3.0/.
 #-------------------------------------------------------------------------------
 
 from FileIO import *
 from UserIO import *
-from sort import *
+from Sort import *
 import jLibrary
 
 def main():
@@ -25,6 +29,7 @@ def main():
     genderArray = fileInteraction.getGenderArray()
     nationalityArray = fileInteraction.getNationalityArray()
     spicyArray = fileInteraction.getSpicyArray()
+
     userInteraction = UserIO()
     userInteraction.getInitialInformation()
     age = userInteraction.getAgeRange()
@@ -36,38 +41,11 @@ def main():
     gender = userInteraction.getGender()
     nationality = userInteraction.getNationality()
     spicy = userInteraction.getSpicy()
+
     sortClass = Sort(gender, nationality, age, spicy, favourites, country, genderArray, nationalityArray, ageArray, spicyArray, countryArray, firstNationalityArray, secondNationalityArray, thirdNationalityArray)
-    (recommendations, weights) = sortClass.getRankings()
-    counter = 0
-    biggest = 0
-    while counter < len(weights):
-        if weights[counter] > weights[biggest]:
-            biggest = counter
-        counter += 1
-    weights.pop(biggest)
-    firstRecommendation = recommendations[biggest]
-    recommendations.pop(biggest)
-    counter = 0
-    biggest = 0
-    while counter < len(weights):
-        if weights[counter] > weights[biggest]:
-            biggest = counter
-        counter += 1
-    weights.pop(biggest)
-    secondRecommendation = recommendations[biggest]
-    recommendations.pop(biggest)
-    counter = 0
-    biggest = 0
-    while counter < len(weights):
-        if weights[counter] > weights[biggest]:
-            biggest = counter
-        counter += 1
-    weights.pop(biggest)
-    thirdRecommendation = recommendations[biggest]
-    recommendations.pop(biggest)
-    print firstRecommendation
-    print secondRecommendation
-    print thirdRecommendation
+    recommendations = sortClass.getRankings()
+    userInteraction.displayRecommendations(recommendations)
+
 
 if __name__ == '__main__':
     main()
