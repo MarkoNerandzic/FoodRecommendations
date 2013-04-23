@@ -14,21 +14,20 @@
 #-------------------------------------------------------------------------------
 
 class FileIO:
-    genderArray = []
+    genderArray = []        #Defines and declares all of the required variables
     nationalityArray = []
     ageArray = []
     spicyArray = []
     favNationalityArray = []
     secondFavNationalityArray = []
     thirdFavNationalityArray = []
-    allNationalityArray = []
     countryArray = []
 
     def getInfoFromFile(self):
         fin = open("Favourite Food Survey (Responses).csv")
-        for line in fin:
+        for line in fin:    #Repeats for each line in the file
             line = line.strip()
-            genderEndComma = line.find(",")
+            genderEndComma = line.find(",") #Specifies the end point of each piece of data in the line
             nationalityEndComma = line.find(",", genderEndComma + 1)
             ageEndComma = line.find(",", nationalityEndComma + 1)
             spicyEndComma = line.find(",", ageEndComma + 1)
@@ -36,7 +35,7 @@ class FileIO:
             secondFavNationalityEndComma = line.find(",", favNationalityEndComma + 1)
             thirdFavNationalityEndComma = line.find(",", secondFavNationalityEndComma + 1)
 
-            gender = line[:genderEndComma]
+            gender = line[:genderEndComma]  #Retrieves each piece of data from the line
             nationality = line[genderEndComma + 1:nationalityEndComma]
             age = line[nationalityEndComma + 1:ageEndComma]
             spicy = line[ageEndComma + 1:spicyEndComma]
@@ -45,7 +44,7 @@ class FileIO:
             thirdFavNationality = line[secondFavNationalityEndComma + 1:thirdFavNationalityEndComma]
             country = line[thirdFavNationalityEndComma + 1:]
 
-            self.genderArray.append(gender.lower())
+            self.genderArray.append(gender.lower()) #Appends the data to relevant array
 
             self.nationalityArray.append(nationality.lower())
 
@@ -61,23 +60,8 @@ class FileIO:
 
             self.countryArray.append(country.lower())
 
-            counter = 0
-            while counter < len(self.favNationalityArray):
-                if self.favNationalityArray[counter] not in self.allNationalityArray:
-                    self.allNationalityArray.append(self.favNationalityArray[counter])
-                counter += 1
-            counter = 0
-            while counter < len(self.secondFavNationalityArray):
-                if self.secondFavNationalityArray[counter] not in self.allNationalityArray:
-                    self.allNationalityArray.append(self.secondFavNationalityArray[counter])
-                counter += 1
-            counter = 0
-            while counter < len(self.thirdFavNationalityArray):
-                if self.thirdFavNationalityArray[counter] not in self.allNationalityArray:
-                    self.allNationalityArray.append(self.thirdFavNationalityArray[counter])
-                counter += 1
 
-    def getGenderArray(self):
+    def getGenderArray(self):   #Returns the requested data
         return self.genderArray
 
     def getNationalityArray(self):

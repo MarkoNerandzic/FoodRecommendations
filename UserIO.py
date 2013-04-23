@@ -17,7 +17,7 @@ import jLibrary
 
 class UserIO():
 
-    spicyPreference = 0
+    spicyPreference = 0     #Declares and defines all relevant variables
     gender = 0
     age = ''
     foodNationalitiesFavorites = []
@@ -32,10 +32,10 @@ class UserIO():
         self.location = self.getLocationFromUser()
         self.nationality = self.getNationalityFromUser()
 
-    def getNationalityFromUser(self):
+    def getNationalityFromUser(self):   #Gets the user's nationality from the user
         return jLibrary.getStrInput('What is your nationality?')
 
-    def getSpicyFromUser(self):
+    def getSpicyFromUser(self): #Gets the user's spicy preference from the user
         spicyTemp = jLibrary.getOption("Do you like spicy food?\n[1]Yes\n[2]No\n[3]Sometimes", 1, 3)
         if spicyTemp == 1:
             return "Yes"
@@ -44,14 +44,14 @@ class UserIO():
         else:
             return "Sometimes"
 
-    def getGenderFromUser(self):
+    def getGenderFromUser(self):    #Gets the user's gender from the user
         genderTemp = jLibrary.getOption("What is your gender?\n[1]Male\n[2]Female", 1, 2)
         if genderTemp == 1:
             return "Male"
         else:
             return "Female"
 
-    def getAgeRangeFromUser(self):
+    def getAgeRangeFromUser(self): #Gets the  user's age range from the user
         userInputTemp = jLibrary.getOption("What age group are you in?\n[1]0-19\n[2]20-39\n[3]40-59\n[4]60-79\n[5]80-99\n[6]100+\n", 1, 6)
         if userInputTemp == 1:
             return "0-19"
@@ -66,7 +66,7 @@ class UserIO():
         else:
             return "100+"
 
-    def getFoodFavoritesFromUser(self):
+    def getFoodFavoritesFromUser(self): #Gets the user's favorite food nationalities
         foodFavorites = []
         finishedGettingInput = False
         counter = 0
@@ -82,10 +82,10 @@ class UserIO():
                 foodFavorites.append(userInputTemp.lower())
         return foodFavorites
 
-    def getLocationFromUser(self):
+    def getLocationFromUser(self):  #Gets the user's location
         return jLibrary.getStrInput("What country do you currently reside in?")
 
-    def displayRecommendations(self, recommendations):
+    def displayRecommendations(self, recommendations):  #Displays recommendations to the user
         print ''
         counter = 0
         moreSuggestions = True
@@ -102,7 +102,7 @@ class UserIO():
             print "recommendation is: %s%s" % (((recommendations[counter])[0]).upper(), (recommendations[counter])[1:])
             counter += 1
 
-    def getSpicy(self):
+    def getSpicy(self):     #Returns requested data
         return self.spicyPreference.lower()
 
     def getGender(self):
@@ -120,7 +120,7 @@ class UserIO():
     def getNationality(self):
         return self.nationality.lower()
 
-    def printWelcomeMessage(self):
+    def printWelcomeMessage(self):  #Prints the welcome message to the user
         print '-----------------Welcome to the Food Nationality Recommendation program!-----------------'
         print '-----------------------------------------------------------------------------------------'
         print 'This program will recommend different nationalities of food to users based on their own'
