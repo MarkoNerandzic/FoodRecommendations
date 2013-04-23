@@ -84,7 +84,7 @@ class Sort():
                     if indexTwo == -1: # If no match was found, create a new entry
                         self.recommendations.append(nationalityTwo[index])
                         self.weights.append(weightFactor)
-                        self.divideFactor.append(0.5)
+                        self.divideFactor.append(5)
                     else: # Else, just increment the nationality's ranking by the weight factor
                         self.weights[indexTwo] += weightFactor
                         self.divideFactor[indexTwo] += 0.5
@@ -92,7 +92,7 @@ class Sort():
                     if indexThree == -1: # Do the same thing for the third favourite, but reduce the weights by half
                         self.recommendations.append(nationalityThree[index])
                         self.weights.append((weightFactor / 2))
-                        self.divideFactor.append(0.5)
+                        self.divideFactor.append(5)
                     else:
                         self.weights[indexThree] += (weightFactor / 2)
                         self.divideFactor[indexThree] += 0.5
