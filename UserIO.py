@@ -1,14 +1,16 @@
 #-------------------------------------------------------------------------------
-# Name:        User IO
-# Purpose:     Obtains data from user and displays the reccomendations to the user
+# Name:        UserIO - Class of FoodRecommendations
+# Purpose:     To interact with the user to get their inputs and then display
+#              their recommendations.
 #
-# Author:      Marko Nerandzic & Justin Moulton
+# Author:      Justin Moulton & Marko Nerandzic
 #
-# Created:     09/04/2013
-# Copyright:   (c) Marko Nerandzic 2013
-# Licence:     This work is licensed under the Creative Commons Attribution-
-#              NonCommercial-NoDerivs 3.0 Unported License. To view a copy of
-#              this license, visit http://creativecommons.org/licenses/by-nd/3.0/.
+# Created:     April 9, 2013
+# Copyright:   (c) Justin Moulton & Marko Nerandzic 2013
+# Licence:     This work is licensed under the Creative Commons
+#              Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+#              To view a copy of this license, visit
+#              http://creativecommons.org/licenses/by-nc-sa/3.0/.
 #-------------------------------------------------------------------------------
 
 import jLibrary
@@ -17,13 +19,21 @@ class UserIO():
 
     spicyPreference = 0
     gender = 0
+    age = ''
+    foodNationalitiesFavorites = []
+    location = ''
+    nationality = ''
 
     def getInitialInformation(self):
-        spicyPreference = self.getSpicyFromUser()
-        gender = self.getGenderFromUser()
-        age = self.getAgeRangeFromUser()
-        foodNationalitiesFavorites = self.getFoodFavoritesFromUser()
-        location = self.getLocationFromUser()
+        self.spicyPreference = self.getSpicyFromUser()
+        self.gender = self.getGenderFromUser()
+        self.age = self.getAgeRangeFromUser()
+        self.foodNationalitiesFavorites = self.getFoodFavoritesFromUser()
+        self.location = self.getLocationFromUser()
+        self.nationality = self.getNationalityFromUser()
+
+    def getNationalityFromUser(self):
+        return jLibrary.getStrInput('What is your nationality?')
 
     def getSpicyFromUser(self):
         spicyTemp = jLibrary.getOption("Do you like spicy food?\n[1]Yes\n[2]No\n[3]Sometimes", 1, 3)
@@ -94,17 +104,20 @@ class UserIO():
                 else:
                     moreSuggestions = False
 
-    def getSpicy():
-        return spicyPreference
+    def getSpicy(self):
+        return self.spicyPreference
 
-    def getGender():
-        return gender
+    def getGender(self):
+        return self.gender
 
-    def getAgeRange():
-        return age
+    def getAgeRange(self):
+        return self.age
 
-    def getFoodFavorites():
-        return foodNationalitiesFavorites
+    def getFoodFavorites(self):
+        return self.foodNationalitiesFavorites
 
-    def getLocation():
-        return location
+    def getLocation(self):
+        return self.location
+
+    def getNationality(self):
+        return self.nationality

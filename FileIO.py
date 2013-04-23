@@ -1,12 +1,16 @@
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Name:        FileIO - Class of FoodRecommendations
+# Purpose:     To gather the survey results from the .csv file and write out the
+#              user's inputs to the file.
 #
-# Author:      321599755
+# Author:      Justin Moulton & Marko Nerandzic
 #
-# Created:     15/04/2013
-# Copyright:   (c) 321599755 2013
-# Licence:     <your licence>
+# Created:     April 9, 2013
+# Copyright:   (c) Justin Moulton & Marko Nerandzic 2013
+# Licence:     This work is licensed under the Creative Commons
+#              Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+#              To view a copy of this license, visit
+#              http://creativecommons.org/licenses/by-nc-sa/3.0/.
 #-------------------------------------------------------------------------------
 
 class FileIO:
@@ -52,36 +56,36 @@ class FileIO:
             thirdFavNationality = line[secondFavNationalityEndComma + 1:thirdFavNationalityEndComma]
             country = line[thirdFavNationalityEndComma + 1:]
 
-            self.ifNotInArrayAppendElseCount(gender, self.genderArray)
+            self.genderArray.append(gender)
 
-            self.ifNotInArrayAppendElseCount(nationality, self.nationalityArray)
+            self.nationalityArray.append(nationality)
 
-            self.ifNotInArrayAppendElseCount(age, self.ageArray)
+            self.ageArray.append(age)
 
-            self.ifNotInArrayAppendElseCount(spicy, self.spicyArray)
+            self.spicyArray.append(spicy)
 
-            self.ifNotInArrayAppendElseCount(favNationality, self.favNationalityArray)
+            self.favNationalityArray.append(favNationality)
 
-            self.ifNotInArrayAppendElseCount(secondFavNationality, self.secondFavNationalityArray)
+            self.secondFavNationalityArray.append(secondFavNationality)
 
-            self.ifNotInArrayAppendElseCount(thirdFavNationality, self.thirdFavNationalityArray)
+            self.thirdFavNationalityArray.append(thirdFavNationality)
 
-            self.ifNotInArrayAppendElseCount(country, self.countryArray)
+            self.countryArray.append(country)
 
             counter = 0
             while counter < len(self.favNationalityArray):
-                if self.favNationalityArray[counter][0] not in self.allNationalityArray:
-                    self.allNationalityArray.append(self.favNationalityArray[counter][0])
+                if self.favNationalityArray[counter] not in self.allNationalityArray:
+                    self.allNationalityArray.append(self.favNationalityArray[counter])
                 counter += 1
             counter = 0
             while counter < len(self.secondFavNationalityArray):
-                if self.secondFavNationalityArray[counter][0] not in self.allNationalityArray:
-                    self.allNationalityArray.append(self.secondFavNationalityArray[counter][0])
+                if self.secondFavNationalityArray[counter] not in self.allNationalityArray:
+                    self.allNationalityArray.append(self.secondFavNationalityArray[counter])
                 counter += 1
             counter = 0
             while counter < len(self.thirdFavNationalityArray):
-                if self.thirdFavNationalityArray[counter][0] not in self.allNationalityArray:
-                    self.allNationalityArray.append(self.thirdFavNationalityArray[counter][0])
+                if self.thirdFavNationalityArray[counter] not in self.allNationalityArray:
+                    self.allNationalityArray.append(self.thirdFavNationalityArray[counter])
                 counter += 1
 
     def getGenderArray(self):

@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
-# Name:        Sort - class of FoodRecommendations
-# Purpose:     To sort the results and create recommendations for the user
+# Name:        Sort - Class of FoodRecommendations
+# Purpose:     To sort the results and create recommendations for the user.
 #
 # Author:      Justin Moulton & Marko Nerandzic
 #
@@ -14,12 +14,13 @@
 
 class Sort():
 
+    recommendations = []
+    weights = []
+
     def __init__(self, gender, nationality, age, spicy, favourites, location, genders, nationalities, ages, spicys, locations, nationalityOne, nationalityTwo, nationalityThree):
-        rankings = self.rankNationalities(gender, nationality, age, spicy, favourites, location, genders, nationalities, ages, spicys, locations, nationalityOne, nationalityTwo, nationalityThree)
+        self.rankNationalities(gender, nationality, age, spicy, favourites, location, genders, nationalities, ages, spicys, locations, nationalityOne, nationalityTwo, nationalityThree)
 
     def rankNationalities(self, gender, nationality, age, spicy, favourites, location, genders, nationalities, ages, spicys, locations, nationalityOne, nationalityTwo, nationalityThree):
-        recommendations = []
-        weights = []
         weightFactor = 0
         index = 0
 
@@ -40,28 +41,28 @@ class Sort():
                 indexThree = -1
 
                 counter = 0
-                while counter < len(recommendations):
-                    if nationalityTwo[index] == recommendations[counter]:
+                while counter < len(self.recommendations):
+                    if nationalityTwo[index] == self.recommendations[counter]:
                         indexTwo = counter
                     counter += 1
 
                 counter = 0
-                while counter < len(recommendations):
-                    if nationalityThree[index] == recommendations[counter]:
+                while counter < len(self.recommendations):
+                    if nationalityThree[index] == self.recommendations[counter]:
                         indexThree = counter
                     counter += 1
 
                 if indexTwo == -1:
-                    recommendations.append(nationalityTwo[index])
-                    weights.append(weightFactor)
+                    self.recommendations.append(nationalityTwo[index])
+                    self.weights.append(weightFactor)
                 else:
-                    weights[indexTwo] += weightFactor
+                    self.weights[indexTwo] += weightFactor
 
                 if indexThree == -1:
-                    recommendations.append(nationalityThree[index])
-                    weights.append((weightFactor / 2))
+                    self.recommendations.append(nationalityThree[index])
+                    self.weights.append((weightFactor / 2))
                 else:
-                    weights[indexThree] += weightFactor
+                    self.weights[indexThree] += weightFactor
 
             weightFactor = 0
             index += 1
@@ -84,28 +85,28 @@ class Sort():
                 indexThree = -1
 
                 counter = 0
-                while counter < len(recommendations):
-                    if nationalityTwo[index] == recommendations[counter]:
+                while counter < len(self.recommendations):
+                    if nationalityTwo[index] == self.recommendations[counter]:
                         indexTwo = counter
                     counter += 1
 
                 counter = 0
-                while counter < len(recommendations):
-                    if nationalityThree[index] == recommendations[counter]:
+                while counter < len(self.recommendations):
+                    if nationalityThree[index] == self.recommendations[counter]:
                         indexThree = counter
                     counter += 1
 
                 if indexTwo == -1:
-                    recommendations.append(nationalityTwo[index])
-                    weights.append(weightFactor)
+                    self.recommendations.append(nationalityTwo[index])
+                    self.weights.append(weightFactor)
                 else:
-                    weights[indexTwo] += weightFactor
+                    self.weights[indexTwo] += weightFactor
 
                 if indexThree == -1:
-                    recommendations.append(nationalityThree[index])
-                    weights.append((weightFactor / 2))
+                    self.recommendations.append(nationalityThree[index])
+                    self.weights.append((weightFactor / 2))
                 else:
-                    weights[indexThree] += weightFactor
+                    self.weights[indexThree] += weightFactor
 
             weightFactor = 0
             index += 1
@@ -128,47 +129,47 @@ class Sort():
                 indexThree = -1
 
                 counter = 0
-                while counter < len(recommendations):
-                    if nationalityTwo[index] == recommendations[counter]:
+                while counter < len(self.recommendations):
+                    if nationalityTwo[index] == self.recommendations[counter]:
                         indexTwo = counter
                     counter += 1
 
                 counter = 0
-                while counter < len(recommendations):
-                    if nationalityThree[index] == recommendations[counter]:
+                while counter < len(self.recommendations):
+                    if nationalityThree[index] == self.recommendations[counter]:
                         indexThree = counter
                     counter += 1
 
                 if indexTwo == -1:
-                    recommendations.append(nationalityTwo[index])
-                    weights.append(weightFactor)
+                    self.recommendations.append(nationalityTwo[index])
+                    self.weights.append(weightFactor)
                 else:
-                    weights[indexTwo] += weightFactor
+                    self.weights[indexTwo] += weightFactor
 
                 if indexThree == -1:
-                    recommendations.append(nationalityThree[index])
-                    weights.append((weightFactor / 2))
+                    self.recommendations.append(nationalityThree[index])
+                    self.weights.append((weightFactor / 2))
                 else:
-                    weights[indexThree] += weightFactor
+                    self.weights[indexThree] += weightFactor
 
             weightFactor = 0
             index += 1
 
         counter = 0
-        while counter < len(recommendations):
-            if favourites[0] == recommendations[counter]:
-                recommendations.pop(counter)
-                weights.pop(counter)
+        while counter < len(self.recommendations):
+            if favourites[0] == self.recommendations[counter]:
+                self.recommendations.pop(counter)
+                self.weights.pop(counter)
                 counter = 0
-            elif favourites[1] == recommendations[counter]:
-                recommendations.pop(counter)
-                weights.pop(counter)
+            elif favourites[1] == self.recommendations[counter]:
+                self.recommendations.pop(counter)
+                self.weights.pop(counter)
                 counter = 0
-            elif favourites[2] == recommendations[counter]:
-                recommendations.pop(counter)
-                weights.pop(counter)
+            elif favourites[2] == self.recommendations[counter]:
+                self.recommendations.pop(counter)
+                self.weights.pop(counter)
                 counter = 0
             counter += 1
 
-        print recommendations
-        print weights
+    def getRankings(self):
+        return (self.recommendations, self.weights)
